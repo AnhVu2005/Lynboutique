@@ -97,6 +97,7 @@
 											<option <?php echo $hdb['trang_thai']  == "Chờ xác nhận" ? 'selected': ''  ?> value="Chờ xác nhận">Chờ xác nhận</option>
 											<option <?php echo $hdb['trang_thai']  == "Đặt hàng" ? 'selected': ''  ?> value="Đặt hàng">Đặt hàng</option>
 											<option <?php echo $hdb['trang_thai']  == "Hủy đơn" ? 'selected': ''  ?> value="Hủy đơn">Hủy đơn</option>
+											<option <?php echo $hdb['trang_thai']  == "Chờ xác nhận thanh toán onl" ? 'selected': ''  ?> value="Chờ xác nhận thanh toán onl">Chờ xác nhận thanh toán onl</option>
 											<option <?php echo $hdb['trang_thai']  == "Đã nhận hàng" ? 'selected': ''  ?> value="Đã nhận hàng">Đã nhận hàng</option>
 											</select>
 										</div>

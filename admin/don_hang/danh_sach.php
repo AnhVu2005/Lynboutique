@@ -91,7 +91,7 @@
 									<?php echo $row["trang_thai"];?>
 								</td>
 								<td>
-									<a href="chi_tiet.php?id=<?php echo $row["id_hdb"];?>" class="btn btn-info">Chi tiết</a>
+									<a href="chi_tiet.php?id=<?php echo $row["id_hdb"];?>" class="btn btn-info" style="width:90px;">Chi tiết</a>
 								</td>
 						    </tr>
 						<?php } ?>

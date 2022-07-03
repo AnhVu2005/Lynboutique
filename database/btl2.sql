@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 14, 2022 lúc 10:40 AM
+-- Thời gian đã tạo: Th5 22, 2022 lúc 03:18 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.2.34
 
@@ -20,6 +20,36 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `btl2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int(11) NOT NULL,
+  `order_id` varchar(255) NOT NULL,
+  `thanh_vien` varchar(100) NOT NULL COMMENT 'thành viên thanh toán',
+  `money` float NOT NULL COMMENT 'số tiền thanh toán',
+  `note` varchar(255) DEFAULT NULL COMMENT 'ghi chú thanh toán',
+  `vnp_response_code` varchar(255) NOT NULL COMMENT 'mã phản hồi',
+  `code_vnpay` varchar(255) NOT NULL COMMENT 'mã giao dịch vnpay',
+  `code_bank` varchar(255) NOT NULL COMMENT 'mã ngân hàng',
+  `time` datetime NOT NULL COMMENT 'thời gian chuyển khoản'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `payments`
+--
+
+INSERT INTO `payments` (`id`, `order_id`, `thanh_vien`, `money`, `note`, `vnp_response_code`, `code_vnpay`, `code_bank`, `time`) VALUES
+(1, '742874161', 'abc', 100000, 'chinh chuyển khoản', '00', '13401455', 'NCB', '2020-10-10 01:00:00'),
+(2, '608324672', 'abc', 1000000, 'test chuyển khoản', '00', '13401811', 'NCB', '2020-10-11 21:00:00'),
+(3, '1134065293', 'CT2', 150000, 'học phí', '00', '13407163', 'NCB', '2020-10-22 23:00:00'),
+(4, '596509313', 'CT2', 5000000, 'học phí', '00', '13407176', 'NCB', '2020-10-23 00:00:00'),
+(5, '70267166', 'CT2', 5000000, 'học phí', '00', '13407178', 'NCB', '2020-10-23 00:00:00'),
+(6, '1672349048', 'CT1', 150000, 'học phí', '00', '13407729', 'NCB', '2020-10-23 21:00:00');
 
 -- --------------------------------------------------------
 
@@ -117,8 +147,8 @@ INSERT INTO `tbl_bo_suu_tap` (`id_bst`, `ten_bst`, `ngay_ra_mat`, `mo_ta`) VALUE
 (3, 'Mùa hè ', '2023-05-01', ' Nàng có yêu những chuyến đi mùa hạ? Chúng mình tin rằng, được diện đồ tone-sur-tone cùng cô bạn thân, vi vu picnic chính là điều tuyệt vời nhất. Đưa nàng ghé thăm khu vườn ngập tràn ánh nắng và hương hoa tươi mới, Lookbook '),
 (9, 'Mùa Đông', '2022-11-15', 'Tiết trời rét ngọt của tháng mười hai, lại thấy yêu cảm giác khoan khoái, dễ chịu khi thu đôi bàn tay trong những ống tay áo len dài ấm áp, vùi mình trong cái thi vị của bản nhạc du dương bên ly café. Khẽ chạm và cảm nhận sự mềm mại, êm ái của len trên đầu ngón tay cũng đủ làm người ta thấy ấm lòng trong những ngày lạnh giá.'),
 (10, 'MÙA THU 2021', '2022-08-19', 'Dành tặng cho những cô gái của Méo một mảng trời xuân trong veo, thanh bình và giản đơn nơi Đà Lạt, nơi bạn có thể để lại sau lưng bao bộn bề, ưu tư và tận hưởng những phút giây thư giãn, yêu chiều bản thân.'),
-(11, 'MÙA XUÂN', '2022-08-01', 'Trong tiết trời se lạnh những ngày cuối năm, nhìn những con phố ngập tràn sắc màu ấm áp, những chiếc lì xì đỏ thắm muôn nơi,… ta lại thấy Tết đã đến thật gần theo cách rất riêng của nó. Tết đến, chính là khoảnh khắc tuyệt vời của những buổi hẹn cuối năm, của những giai điệu tươi vui, và cả những bộ cánh mới điệu đà. '),
-(12, 'MÃI MÃI TUỔI 20', '2022-07-01', 'điều thú vị nhất của tuổi trẻ là khi chúng ta có thể đi bất cứ đâu, đi khắp thế giới, làm những gì mình thích và khám phá biết bao điều tuyệt vời. cũng giống như việc được mặc trên mình một chiếc áo thun rộng rãi, thoải mái, cảm giác thật tự do.');
+(11, 'MÙA XUÂN', '2022-04-20', 'Trong tiết trời se lạnh những ngày cuối năm, nhìn những con phố ngập tràn sắc màu ấm áp, những chiếc lì xì đỏ thắm muôn nơi,… ta lại thấy Tết đã đến thật gần theo cách rất riêng của nó. Tết đến, chính là khoảnh khắc tuyệt vời của những buổi hẹn cuối năm, của những giai điệu tươi vui, và cả những bộ cánh mới điệu đà. '),
+(12, 'MÃI MÃI TUỔI 20', '2022-07-04', 'Điều thú vị nhất của tuổi trẻ là khi chúng ta có thể đi bất cứ đâu, đi khắp thế giới, làm những gì mình thích và khám phá biết bao điều tuyệt vời. Cũng giống như việc được mặc trên mình một chiếc áo thun rộng rãi, thoải mái, cảm giác thật tự do.');
 
 -- --------------------------------------------------------
 
@@ -199,7 +229,7 @@ INSERT INTO `tbl_goi_y_sp` (`id`, `id_sp`, `views`) VALUES
 (14, 32, 8),
 (15, 33, 0),
 (16, 34, 0),
-(17, 35, 3),
+(17, 35, 1),
 (18, 36, 0),
 (19, 37, 3),
 (20, 38, 0),
@@ -209,12 +239,12 @@ INSERT INTO `tbl_goi_y_sp` (`id`, `id_sp`, `views`) VALUES
 (24, 42, 9),
 (25, 43, 7),
 (26, 44, 5),
-(27, 45, 15),
+(27, 45, 10),
 (28, 46, 2),
-(29, 47, 6),
+(29, 47, 5),
 (30, 48, 5),
 (31, 49, 1),
-(32, 50, 13),
+(32, 50, 12),
 (33, 52, 1);
 
 -- --------------------------------------------------------
@@ -293,9 +323,7 @@ INSERT INTO `tbl_khach_hang` (`id_khach_hang`, `ten_kh`, `username`, `password`,
 (6, 'Nguyễn Phương Anh', 'npa99@gmail.com', '71391005dd62b5e5b6a8c028324f58f6', 'npa99@gmail.com', '0912345876', '2000-11-10', '50 Hàng Bạc, Hoàn Kiếm, Hà Nội'),
 (7, 'Nguyễn Minh Anh', 'mna15@gmail.com', 'a013dc3391181b848fa338be6a56a064', 'mna15@gmail.com', '0912349876', '1999-11-15', '102 Minh Khai, Hai bà Trưng, Hà Nội'),
 (8, 'Vũ Thùy Vân', 'vtv08@gmail.com', '6e3d3009afffb95bc13038f6ba3cebd8', 'vtv08@gmail.com', '091298765', '2000-09-10', '120 Hoàng Quốc Việt, Cầu Giấy, Hà Nội'),
-(23, 'Đinh Quốc Bình', 'binh2705', '1b7ab9cd871eceddadd9d17ec07c1dca', 'binhdq@gmail.com', '0901772194', '0000-00-00', '112 Trần Đại Nghĩa'),
-(24, 'Đinh Quốc Bình', 'binh2705', '1b7ab9cd871eceddadd9d17ec07c1dca', 'binhdq@gmail.com', '0901772194', '1999-05-27', '112 Trần Đại Nghĩa'),
-(25, 'Đinh Quốc Bình', 'binh2705', '1b7ab9cd871eceddadd9d17ec07c1dca', 'binhdq@gmail.com', '0901772194', '1999-05-27', '112 Trần Đại Nghĩa');
+(19, 'Đinh Quốc Bình', 'QBinh', 'd240ebd1abbcac8ed94505d6ccb55932', 'dqb270599@gmail.com', '012345679', '1999-05-27', '112 Trần Đại Nghĩa');
 
 -- --------------------------------------------------------
 
@@ -319,8 +347,8 @@ CREATE TABLE `tbl_lien_he` (
 INSERT INTO `tbl_lien_he` (`id_lien_he`, `ten`, `sdt`, `email`, `noi_dung`, `phan_hoi`) VALUES
 (1, 'Hoàng Hải Yến', 395485843, 'hhy2602@gmail.com', 'muốn đổi sang mẫu khác', 'dgdfg'),
 (2, 'Nguyễn Phương Linh', 834572937, 'LNPL@gmail.com', 'Hàng bị lỗi, muốn đổi mẫu khác', 'dfsdfsdfsdf'),
-(3, 'Hoàng Hải Yến', 958365843, 'hhy2602@gmail.com', 'Váy xinh nhưng hơi bé.Muốn đổi size váy', 'll'),
-(4, 'Hoàng Nghĩa Anh Vũ', 901772193, 'anhvu200599@gmail.com', 'Mình muốn đổi Váy hai dây màu đen sang sản phẩm Váy trắng hai dây', '123123');
+(3, 'Hoàng Hải Yến', 958365843, 'hhy2602@gmail.com', 'Váy xinh nhưng hơi bé.Muốn đổi size váy', NULL),
+(4, 'Hoàng Nghĩa Anh Vũ', 901772193, 'anhvu200599@gmail.com', 'Mình muốn đổi Váy hai dây màu đen sang sản phẩm Váy trắng hai dây', 'Cảm ơn quý khách đã liên hệ và Shop sẽ đổi sản phẩm cho bạn. Bạn vui lòng bảo quản sản phẩm cẩn thận và giữ nguyên tem mác cho tới ngày đổi nhé!');
 
 -- --------------------------------------------------------
 
@@ -388,6 +416,7 @@ CREATE TABLE `tbl_san_pham` (
   `id_bst` int(11) DEFAULT NULL,
   `ten_sp` varchar(255) NOT NULL,
   `anh` text NOT NULL,
+  `so_luong` int(11) NOT NULL,
   `so_luong_s` int(11) NOT NULL,
   `so_luong_m` int(11) NOT NULL,
   `so_luong_l` int(11) NOT NULL,
@@ -402,39 +431,39 @@ CREATE TABLE `tbl_san_pham` (
 -- Đang đổ dữ liệu cho bảng `tbl_san_pham`
 --
 
-INSERT INTO `tbl_san_pham` (`id_sp`, `id_ncc`, `id_phan_loai`, `id_bst`, `ten_sp`, `anh`, `so_luong_s`, `so_luong_m`, `so_luong_l`, `so_luong_xl`, `gia_ban`, `gia_giam`, `muc_km`, `mo_ta`) VALUES
-(19, 6, 1, 3, 'Áo thun Venice ', '1594669779-e07d1d71d958c8e53e35cb56c33da2a61e780c2b47ac3a7b5f0359b5.jpg', 50, 50, 44, 50, 200000, 100000, 10, 'Năng động '),
-(20, 5, 1, 3, 'Áo thun Barcelona', '1594669508-4c82b3a7dbe92e33fc8bf3559f24159bec5624c624cbbdde83305031.jpg', 52, 48, 50, 56, 200000, 150000, 5, 'Áo thun nữ, cổ tròn, freesize.\r\n\r\nChất liệu: cotton.\r\n\r\nMàu sắc: đen.'),
-(21, 6, 1, 3, 'Áo thun California', '1594675388-abd6cc5ed03e89eff059a97c7b4ad7645e5766bbc405ac3ceaaa4708.jpg', 50, 50, 50, 50, 250000, 149000, 10, 'Áo thun nữ, cổ tròn, freesize. Chất liệu: cotton. Màu sắc: đen.'),
-(22, 7, 1, 3, 'Áo thun Egg', '1594675498-1709698cf438183b6828197e5e804ed2ae229f69b87c6b02758f7090.jpg', 50, 50, 50, 50, 250000, 149000, 10, 'Áo thun nữ, cổ tròn, freesize. Chất liệu: cotton. Màu sắc: Trắng.'),
-(23, 7, 1, 3, 'Áo thun London', '1594675566-978c1ddd3b9990e4a88d5939acdbdf1304fe2a3ace467b30a04a7484.jpg', 50, 45, 50, 50, 200000, 149000, 5, 'Áo thun nữ, cổ tròn, freesize. Chất liệu: cotton. Màu sắc: vàng.'),
-(24, 6, 1, 9, 'Áo thun Healthy', '1594675647-fdd78d764ebc85f4c5c481779a80f44498886d6c0d5287db9f21c45c.jpg', 50, 50, 50, 50, 200000, 99000, 15, 'Áo thun nữ, cổ tròn, freesize. Chất liệu: cotton. Màu sắc: tím.'),
-(25, 11, 2, 9, 'Áo nỉ tom and jerry', '1594675874-6d670da95004cda08ca69ebd83b985b4661860a67678e16d2a7e02ed.jpg', 50, 50, 50, 50, 450000, 349000, 10, 'SKU: ANA-00529'),
-(26, 11, 2, 9, 'Áo nỉ Trắng có mũ', '1594675932-19ccf662f75ec5b90a817d9f6f7f3d379a60d719928a6abc9cf1164b.jpg', 50, 50, 50, 50, 500000, 400000, 10, 'SKU: ANA-00530'),
-(27, 11, 2, 9, 'Áo nỉ đen', '1594676091-c9440b57df827343eb7a45f6e34a99cc63e26164e83ae8c124ed2249.jpg', 50, 38, 40, 50, 500000, 300000, 15, 'SKU: ANA-00531'),
-(28, 10, 2, 9, 'Áo nỉ mickey hot 2020', '1594676159-e7b4f7eac4a8abb447976839f59f3cadccb5ab2f721f84b5f2fd32cd.jpg', 50, 48, 50, 50, 500000, 299000, 20, 'SKU: ANA-00529'),
-(29, 10, 2, 9, 'Áo nỉ trắng ', '1594676235-da0e61b5f175a645b1c5fe24ad7239dae89e71cf984279802bcb7811.jpg', 50, 50, 50, 50, 300000, 250000, 5, 'SKU: ANA-00529'),
-(30, 10, 2, 10, 'Áo nỉ cho bạn bè', '1594676328-953aede6d494aeb44ccd9589f89a07f31adcccecbec6986d57becfc1.jpg', 50, 50, 50, 50, 400000, 350000, 5, 'SKU: ANA-00529'),
-(31, 11, 2, 10, 'Áo nỉ cho bạn bè', '1594676399-cb857bceaa77b99a0a85bde2fb96ca71b63b1b387c24e1eb222b59af.jpg', 50, 50, 50, 50, 400000, 250000, 25, 'SKU: ANA-005300'),
-(32, 7, 3, 10, 'Quần Short Trắng', '1594676565-e525b9484a1d07510225d8dd3e2541eb4e4f892c85e14f3f7b5acbcf.jpg', 50, 35, 35, 50, 32000, 250000, 10, 'Quần short nữ mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.\r\nChất liệu: Kaki.\r\nThông số: \r\n'),
-(33, 10, 3, 10, 'Quần kẻ', '1594676716-1500100308024_1.jpg', 50, 50, 50, 50, 400000, 399000, 10, 'Quần short nữ mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.\r\nChất liệu: Kaki.\r\n\r\n'),
-(34, 10, 3, 10, 'Short chấm bi', '1594676762-1500200321756_2.jpg', 50, 50, 50, 50, 450000, 400000, 5, 'Quần short nữ mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.\r\nChất liệu: Kaki.'),
-(35, 8, 4, 11, 'Váy MIDI', '1594676928-1700500232299_2.JPG', 50, 50, 50, 50, 300000, 249000, 5, 'Váy midi mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(36, 8, 4, 11, 'Chân váy dài', '1594677033-1700300299355_2.JPG', 50, 50, 50, 50, 400000, 320000, 10, 'Váy dài mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(37, 8, 4, 11, 'Chân váy Jean', '1594677088-1700400282165_2.JPG', 44, 50, 50, 50, 300000, 249000, 5, 'Váy jean mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(38, 8, 4, 11, 'Chân Váy vàng', '1594677375-1700400314835_2.JPG', 50, 50, 50, 50, 400000, 320000, 5, 'Váy midi mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(39, 8, 4, 11, 'Váy trắng', '1594677454-1700300321711_2.JPG', 35, 47, 47, 40, 300000, 280000, 5, 'Váy trắng mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(40, 8, 4, 11, 'Váy xanh', '1594677508-1700600305282_2.JPG', 50, 50, 45, 50, 400000, 350000, 5, 'Váy midi mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(41, 6, 5, 3, 'Yếm sọc đỏ', '1594677736-1100500308718_2.JPG', 50, 50, 50, 50, 600000, 450000, 20, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(42, 7, 5, 3, 'Yếm trắng', '1594677787-1100500308732_2.JPG', 50, 50, 50, 50, 550000, 480000, 10, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(43, 8, 5, 3, 'Yếm xanh', '1594677825-1100500308701_2.JPG', 50, 50, 50, 50, 60000, 450000, 20, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(44, 7, 6, 11, 'Váy Hoa', '1594677888-1100400318572_2.JPG', 50, 50, 50, 50, 700000, 580000, 20, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(45, 9, 6, 12, 'Đầm Hoa tay bồng', '1594677939-1100200262235_2.JPG', 50, 50, 50, 50, 800000, 600000, 20, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(46, 7, 6, 12, 'Váy trễ vai vàng', '1594677992-1100400308481_2.JPG', 50, 50, 50, 50, 700000, 580000, 10, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(47, 10, 6, 12, 'Váy cúc', '1594678044-1100300285684_2.JPG', 50, 50, 45, 50, 600000, 550000, 5, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(48, 8, 6, 12, 'Váy trắng hai dây', '1594678106-1100200316525_2.JPG', 50, 50, 50, 50, 900000, 650000, 25, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(49, 11, 6, 12, 'Đầm nâu', '1594678159-1100100309559_2.JPG', 50, 50, 50, 50, 750000, 600000, 20, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
-(50, 10, 6, 12, 'Váy hai dây màu đen', '1594678212-1100400314048_2.JPG', 50, 50, 50, 50, 800000, 700000, 10, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.');
+INSERT INTO `tbl_san_pham` (`id_sp`, `id_ncc`, `id_phan_loai`, `id_bst`, `ten_sp`, `anh`, `so_luong`, `so_luong_s`, `so_luong_m`, `so_luong_l`, `so_luong_xl`, `gia_ban`, `gia_giam`, `muc_km`, `mo_ta`) VALUES
+(19, 6, 1, 3, 'Áo thun Venice ', '1594669779-e07d1d71d958c8e53e35cb56c33da2a61e780c2b47ac3a7b5f0359b5.jpg', 200, 50, 50, 44, 50, 200000, 100000, 10, 'Năng động '),
+(20, 5, 1, 3, 'Áo thun Barcelona', '1594669508-4c82b3a7dbe92e33fc8bf3559f24159bec5624c624cbbdde83305031.jpg', 200, 52, 48, 50, 56, 200000, 150000, 5, 'Áo thun nữ, cổ tròn, freesize.\r\n\r\nChất liệu: cotton.\r\n\r\nMàu sắc: đen.'),
+(21, 6, 1, 3, 'Áo thun California', '1594675388-abd6cc5ed03e89eff059a97c7b4ad7645e5766bbc405ac3ceaaa4708.jpg', 200, 50, 50, 50, 50, 250000, 149000, 10, 'Áo thun nữ, cổ tròn, freesize. Chất liệu: cotton. Màu sắc: đen.'),
+(22, 7, 1, 3, 'Áo thun Egg', '1594675498-1709698cf438183b6828197e5e804ed2ae229f69b87c6b02758f7090.jpg', 200, 50, 50, 50, 50, 250000, 149000, 10, 'Áo thun nữ, cổ tròn, freesize. Chất liệu: cotton. Màu sắc: Trắng.'),
+(23, 7, 1, 3, 'Áo thun London', '1594675566-978c1ddd3b9990e4a88d5939acdbdf1304fe2a3ace467b30a04a7484.jpg', 200, 50, 45, 50, 50, 200000, 149000, 5, 'Áo thun nữ, cổ tròn, freesize. Chất liệu: cotton. Màu sắc: vàng.'),
+(24, 6, 1, 9, 'Áo thun Healthy', '1594675647-fdd78d764ebc85f4c5c481779a80f44498886d6c0d5287db9f21c45c.jpg', 200, 50, 50, 50, 50, 200000, 99000, 15, 'Áo thun nữ, cổ tròn, freesize. Chất liệu: cotton. Màu sắc: tím.'),
+(25, 11, 2, 9, 'Áo nỉ tom and jerry', '1594675874-6d670da95004cda08ca69ebd83b985b4661860a67678e16d2a7e02ed.jpg', 200, 50, 50, 50, 50, 450000, 349000, 10, 'SKU: ANA-00529'),
+(26, 11, 2, 9, 'Áo nỉ Trắng có mũ', '1594675932-19ccf662f75ec5b90a817d9f6f7f3d379a60d719928a6abc9cf1164b.jpg', 200, 50, 50, 50, 50, 500000, 400000, 10, 'SKU: ANA-00530'),
+(27, 11, 2, 9, 'Áo nỉ đen', '1594676091-c9440b57df827343eb7a45f6e34a99cc63e26164e83ae8c124ed2249.jpg', 200, 50, 38, 40, 50, 500000, 300000, 15, 'SKU: ANA-00531'),
+(28, 10, 2, 9, 'Áo nỉ mickey hot 2020', '1594676159-e7b4f7eac4a8abb447976839f59f3cadccb5ab2f721f84b5f2fd32cd.jpg', 200, 50, 48, 50, 50, 500000, 299000, 20, 'SKU: ANA-00529'),
+(29, 10, 2, 9, 'Áo nỉ trắng ', '1594676235-da0e61b5f175a645b1c5fe24ad7239dae89e71cf984279802bcb7811.jpg', 200, 50, 50, 50, 50, 300000, 250000, 5, 'SKU: ANA-00529'),
+(30, 10, 2, 10, 'Áo nỉ cho bạn bè', '1594676328-953aede6d494aeb44ccd9589f89a07f31adcccecbec6986d57becfc1.jpg', 200, 50, 50, 50, 50, 400000, 350000, 5, 'SKU: ANA-00529'),
+(31, 11, 2, 10, 'Áo nỉ cho bạn bè', '1594676399-cb857bceaa77b99a0a85bde2fb96ca71b63b1b387c24e1eb222b59af.jpg', 200, 50, 50, 50, 50, 400000, 250000, 25, 'SKU: ANA-005300'),
+(32, 7, 3, 10, 'Quần Short Trắng', '1594676565-e525b9484a1d07510225d8dd3e2541eb4e4f892c85e14f3f7b5acbcf.jpg', 200, 50, 35, 35, 50, 32000, 250000, 10, 'Quần short nữ mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.\r\nChất liệu: Kaki.\r\nThông số: \r\n'),
+(33, 10, 3, 10, 'Quần kẻ', '1594676716-1500100308024_1.jpg', 200, 50, 50, 50, 50, 400000, 399000, 10, 'Quần short nữ mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.\r\nChất liệu: Kaki.\r\n\r\n'),
+(34, 10, 3, 10, 'Short chấm bi', '1594676762-1500200321756_2.jpg', 200, 50, 50, 50, 50, 450000, 400000, 5, 'Quần short nữ mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.\r\nChất liệu: Kaki.'),
+(35, 8, 4, 11, 'Váy MIDI', '1594676928-1700500232299_2.JPG', 200, 50, 50, 50, 50, 300000, 249000, 5, 'Váy midi mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(36, 8, 4, 11, 'Chân váy dài', '1594677033-1700300299355_2.JPG', 200, 50, 50, 50, 50, 400000, 320000, 10, 'Váy dài mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(37, 8, 4, 11, 'Chân váy Jean', '1594677088-1700400282165_2.JPG', 200, 44, 50, 50, 50, 300000, 249000, 5, 'Váy jean mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(38, 8, 4, 11, 'Chân Váy vàng', '1594677375-1700400314835_2.JPG', 200, 50, 50, 50, 50, 400000, 320000, 5, 'Váy midi mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(39, 8, 4, 11, 'Váy trắng', '1594677454-1700300321711_2.JPG', 200, 35, 47, 47, 40, 300000, 280000, 5, 'Váy trắng mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(40, 8, 4, 11, 'Váy xanh', '1594677508-1700600305282_2.JPG', 200, 50, 50, 45, 50, 400000, 350000, 5, 'Váy midi mang phong cách năng động, trẻ trung.\r\nThiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(41, 6, 5, 3, 'Yếm sọc đỏ', '1594677736-1100500308718_2.JPG', 200, 50, 50, 50, 50, 600000, 450000, 20, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(42, 7, 5, 3, 'Yếm trắng', '1594677787-1100500308732_2.JPG', 200, 50, 50, 50, 50, 550000, 480000, 10, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(43, 8, 5, 3, 'Yếm xanh', '1594677825-1100500308701_2.JPG', 200, 50, 50, 50, 50, 60000, 450000, 20, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(44, 7, 6, 11, 'Váy Hoa', '1594677888-1100400318572_2.JPG', 200, 50, 50, 50, 50, 700000, 580000, 20, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(45, 9, 6, 12, 'Đầm Hoa tay bồng', '1594677939-1100200262235_2.JPG', 200, 50, 50, 50, 50, 800000, 600000, 20, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(46, 7, 6, 12, 'Váy trễ vai vàng', '1594677992-1100400308481_2.JPG', 200, 50, 50, 50, 50, 700000, 580000, 10, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(47, 10, 6, 12, 'Váy cúc', '1594678044-1100300285684_2.JPG', 200, 50, 50, 45, 50, 600000, 550000, 5, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(48, 8, 6, 12, 'Váy trắng hai dây', '1594678106-1100200316525_2.JPG', 200, 50, 50, 50, 50, 900000, 650000, 25, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(49, 11, 6, 12, 'Đầm nâu', '1594678159-1100100309559_2.JPG', 200, 50, 50, 50, 50, 750000, 600000, 20, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.'),
+(50, 10, 6, 12, 'Váy hai dây màu đen', '1594678212-1100400314048_2.JPG', 200, 50, 50, 50, 50, 800000, 700000, 10, 'Thiết kế đơn giản, dễ dàng kết hợp với các phụ kiện thời trang khác.\r\nĐường may tỉ mỉ, chắc chắn, bền đẹp theo thời gian.\r\nThích hợp diện đi chơi, dạo phố.');
 
 -- --------------------------------------------------------
 
@@ -465,6 +494,12 @@ INSERT INTO `tbl_tin_tuc` (`id_tin_tuc`, `ten`, `tieu_de`, `noi_dung`, `anh`, `n
 --
 -- Chỉ mục cho các bảng đã đổ
 --
+
+--
+-- Chỉ mục cho bảng `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Chỉ mục cho bảng `tbl_admin`
@@ -543,6 +578,12 @@ ALTER TABLE `tbl_tin_tuc`
 --
 
 --
+-- AUTO_INCREMENT cho bảng `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT cho bảng `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
@@ -558,7 +599,7 @@ ALTER TABLE `tbl_anh`
 -- AUTO_INCREMENT cho bảng `tbl_bo_suu_tap`
 --
 ALTER TABLE `tbl_bo_suu_tap`
-  MODIFY `id_bst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_bst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_chi_tiet_hdb`
@@ -582,7 +623,7 @@ ALTER TABLE `tbl_hdb`
 -- AUTO_INCREMENT cho bảng `tbl_khach_hang`
 --
 ALTER TABLE `tbl_khach_hang`
-  MODIFY `id_khach_hang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_khach_hang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_lien_he`
@@ -606,7 +647,7 @@ ALTER TABLE `tbl_phan_loai`
 -- AUTO_INCREMENT cho bảng `tbl_san_pham`
 --
 ALTER TABLE `tbl_san_pham`
-  MODIFY `id_sp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_sp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_tin_tuc`

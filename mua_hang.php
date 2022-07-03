@@ -90,6 +90,19 @@
 				";
 			}
 		}
+		if(isset($_POST['dat_hang_onl'])) {
+			$_SESSION['thong_tin_khach_tt']=[];
+			$_SESSION['thong_tin_khach_tt']['ten_kh'] = $_POST["ten_kh"];
+			$_SESSION['thong_tin_khach_tt']['email'] = $_POST["email"];
+			$_SESSION['thong_tin_khach_tt']['sdt'] = $_POST["sdt"];
+			$_SESSION['thong_tin_khach_tt']['dia_chi'] = $_POST["dia_chi"];
+			echo 
+				"
+					<script type='text/javascript'>
+						window.location.href = '/DoAnTotNghiep/mua_hang_onl.php'
+					</script>
+				";
+		}
 	?>
 
    <!-- Checkout content section start -->
@@ -110,9 +123,9 @@
 									$khach_hang = mysqli_fetch_array($sql_query);
 								?>
 							
-								<input type="text" name="ten_kh" value="<?php echo $khach_hang['ten_kh']; ?>" placeholder="Tên khách hàng" />
-								<input type="email" name="email" value="<?php echo $khach_hang['email']; ?>" placeholder="Địa chỉ email" />
-								<input type="text" name="sdt" value="<?php echo $khach_hang['sdt']; ?>" placeholder="Số điện thoại" />
+								<input type="text" name="ten_kh" value="<?php echo $khach_hang['ten_kh']; ?>" placeholder="Tên khách hàng" required/>
+								<input type="email" name="email" value="<?php echo $khach_hang['email']; ?>" placeholder="Địa chỉ email" required/>
+								<input type="text" name="sdt" value="<?php echo $khach_hang['sdt']; ?>" placeholder="Số điện thoại" required/>
 								<div class="custom-mess">
 									<textarea rows="2" name="dia_chi" placeholder="Địa chỉ nhận hàng"><?php echo $khach_hang['dia_chi']; ?></textarea>
 								</div>
@@ -168,12 +181,10 @@
 					<div class="col-xs-12 col-sm-6">
 						<div class="text-center">
 							<?php if (isset($_SESSION['tong_tien_gio_hang'])) {?>
-								<div class="normal-a">
-									<p>Thanh toán khi nhận hàng</p>
-								</div>
 								<div class="categories">
 									<div class="submit-text">
-										<button name="dat_hang">Đặt mua</button>
+										<button name="dat_hang">Thanh toán tiền mặt</button>
+										<button name="dat_hang_onl">Thanh toán qua VNpay</button>
 									</div>
 								</div>
 							<?php } ?>

@@ -168,49 +168,13 @@
 								return array_merge(quick_sort($gt), array($pivot_key => $pivot), quick_sort($loe));
 							}
 						} else {
-							// while ($row = $_COOKIE["goiySP"]) {
-							// for ($x = 1; $x <= 10; $x++){
-							// 	$object = new stdClass();
-							// 	$object->id = intval($row["id_phan_loai"]);
-							// 	$object->views = intval($row['views']);
-							// 	array_push($list_row_temp, $object);
-							// 	// $list_row_temp[intval($row["id_phan_loai"])] = intval($row['views']);
-							// }
+							
 							$list_row_temp = $_COOKIE["goiySP"];
-							//dden day
 						}
 
-						// function quick_sort($my_array)
-						// {
-						// 	$loe = $gt = array();
-						// 	if (count($my_array) < 2) {
-						// 		return $my_array;
-						// 	}
-						// 	$pivot_key = key($my_array);
-						// 	$pivot = array_shift($my_array);
-						// 	foreach ($my_array as $val) {
-						// 		if ($val->views <= $pivot->views) {
-						// 			$loe[] = $val;
-						// 		} elseif ($val->views > $pivot->views) {
-						// 			$gt[] = $val;
-						// 		}
-						// 	}
-						// 	return array_merge(quick_sort($loe), array($pivot_key => $pivot), quick_sort($gt));
-						// }
-
-						// function cmp($a, $b)
-						// {
-						// 	return $a->views < $b->views;
-						// }
 						$list_row_temp = quick_sort($list_row_temp);
 						$list_full_product = array();
 
-						// lay du lieu san pham
-						// $sql = "SELECT * FROM tbl_san_pham where tbl_san_pham.id_phan_loai = " . $list_row_temp[0]->id .
-						// 	" || tbl_san_pham.id_phan_loai = " . $list_row_temp[1]->id .
-						// 	" || tbl_san_pham.id_phan_loai = " . $list_row_temp[2]->id .
-						// 	" ORDER BY tbl_san_pham.id_phan_loai ASC ";
-						// "";
 						$sql = "WITH cte AS
 						(SELECT *,
 						(dense_rank() over(PARTITION BY tbl_san_pham.id_phan_loai  ORDER BY tbl_san_pham.id_sp DESC)) AS ranking 
@@ -244,7 +208,7 @@
 											<img src="/DoAnTotNghiep/img/<?php echo $row["anh"]; ?>" />
 										</a>
 										<div class="actions-btn">
-											<a href="?them_gio_hang=<?php echo $row["id_sp"]; ?>&&so_luong_sp=1"><i class="mdi mdi-cart"></i></a>
+											<a href="?them_gio_hang=<?php echo $row["id_sp"]; ?>&size-pick=m&so_luong_sp=1"><i class="mdi mdi-cart"></i></a>
 											<a href="/DoAnTotNghiep/chi_tiet_sp.php?id_sp=<?php echo $row["id_sp"]; ?>"><i class="mdi mdi-eye"></i></a>
 										</div>
 									</div>

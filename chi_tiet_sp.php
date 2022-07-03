@@ -167,7 +167,7 @@
 			// event.preventDefault();
 			if (document.getElementsByName("so_luong_sp")[0].valueAsNumber > document.getElementById("ton_kho").innerHTML) {
 				event.preventDefault();
-				alert("Số lương sản phẩm không được quá giới hạn tồn kho!")
+				alert("Số lượng sản phẩm không được quá giới hạn tồn kho!")
 			}
 
 		});
